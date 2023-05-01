@@ -1,0 +1,42 @@
+/* Hide the navigation links on small screens */
+.header-nav-link {
+    display: block;
+  }
+  @media only screen and (max-width: 768px) {
+    .header-nav-link {
+      display: none;
+    }
+  
+    /* Show the hamburger icon */
+    .hamburger-icon {
+      display: block;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 20px;
+    }
+  
+    /* Style the hamburger icon */
+    .hamburger-icon::before,
+    .hamburger-icon::after {
+      content: "";
+      display: block;
+      width: 25px;
+      height: 3px;
+      background-color: whitesmoke;
+      margin: 5px 0;
+    }
+    .hamburger-icon::after {
+      margin-bottom: 0;
+    }
+  
+    /* Show the mobile menu when the hamburger icon is clicked */
+    .mobile-menu {
+      display: none;
+    }
+    .show-mobile-menu {
+      display: block;
+    }
+  }
+  
