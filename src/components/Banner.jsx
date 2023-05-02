@@ -18,8 +18,8 @@ const Banner = () => {
         </div>
         <div className="absolute top-1/2 md:top-3/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ">
           <div className="text-center">
-            <h1 className="text-3xl font-bold text-white">Fried Chicken with Salad</h1>
-            <p className="text-lg text-white mt-2">You will get a full Fried Chicken with Salad.</p>
+            <h1 className="text-3xl md:text-5xl font-bold text-white">Fried Chicken with Salad</h1>
+            <p className="text-lg md:text-2xl text-white mt-2">You will get a full Fried Chicken with Salad.</p>
             <button className="btn btn-primary mt-4">Click here to Order</button>
           </div>
         </div>
@@ -38,9 +38,9 @@ const Banner = () => {
           </a>
         </div>
         <div className="absolute top-1/2 md:top-3/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          <div className="text-center text-green-400">
-            <h1 className="text-3xl font-extrabold">Mexican Salad </h1>
-            <p className="text-lg mt-2 font-bold">In this menu we will serving you Mexican Salad for full family</p>
+          <div className="text-center text-green-100">
+            <h1 className="text-3xl md:text-5xl font-extrabold">Mexican Salad </h1>
+            <p className="text-lg md:text-3xl mt-2 font-bold">In this menu we will serving you Mexican Salad for full family</p>
             <button className="btn btn-primary mt-4 font-bold text-red-500">Click Here to Order</button>
           </div>
         </div>
@@ -60,8 +60,8 @@ const Banner = () => {
         </div>
         <div className="absolute top-1/2 md:top-3/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 my-auto">
           <div className="text-center text-black">
-            <h1 className="text-3xl font-extrabold">Pizza and Burger for Lunch</h1>
-            <p className="text-lg mt-2 font-bold">In this menu we will serve you your lunch food with Pizza and Burger</p>
+            <h1 className="text-3xl md:text-5xl font-extrabold">Pizza and Burger for Lunch</h1>
+            <p className="text-lg md:text-3xl mt-2 font-bold">In this menu we will serve you your lunch food with Pizza and Burger</p>
             <button className="btn btn-primary mt-4 font-bold text-red-600">Click Here to Order</button>
           </div>
         </div>
