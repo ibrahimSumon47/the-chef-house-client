@@ -25,7 +25,7 @@ const ViewRecipeButton = () => {
             alt="Album"
           />
         </figure>
-        <div className="card-body">
+        <div className="card-body my-auto">
           <h2 className="card-title">{chef_name}</h2>
           <p className="font-bold">{bio_description}</p>
           <p className="font-bold">Experience: {experience}</p>

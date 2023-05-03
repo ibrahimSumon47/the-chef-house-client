@@ -27,7 +27,7 @@ const ChefCard = () => {
             chef_picture1,
             chef_name,
             experience,
-            bio_description,
+            recipes,
             Likes,
           }) => (
             <div key={id}>
@@ -39,19 +39,16 @@ const ChefCard = () => {
                     alt="Chef"
                   />
                 </figure>
-                <div className="card-body">
-                  <h2 className="card-title">{chef_name}</h2>
-                  <p>Experience: {experience}</p>
-                  <h3 className="w-52">Bio: {bio_description}</h3>
+                <div className="mx-5">
+                  <h2 className="card-title mt-10 md:mt-20">{chef_name}</h2>
+                  <p className="mb-5">Experience: {experience}</p>
+                  <p>Recipes: {recipes.recipes_number}</p>
                   <div className="">
                     <div className="flex mt-5">
                       <p className="">Likes: {Likes}</p>
-                      <button className="">
-                        <FaRegHeart />
-                      </button>
                     </div>
                     <Link to={`chef_details/${id}`}>
-                      <button className="btn btn-primary mt-5 w-56">
+                      <button className="btn btn-primary mt-5 w-56 my-10">
                         View Recipes
                       </button>
                     </Link>
