@@ -1,7 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaHeart } from "react-icons/fa";
+import { ReactNotifications } from "react-notifications-component";
+import "react-notifications-component/dist/theme.css";
 
 const RecipesDetails = ({ recipeCard }) => {
+  const [loveButton, setLoveButton] = useState({});
+
+  const handleLoveButton = (id) => {
+    setLoveButton({ ...loveButton, [id]: true });
+    Store.addNotification({
+      title: "Wonderful!",
+      message: "teodosii@react-notifications-component",
+      type: "success",
+      insert: "top",
+      container: "top-right",
+      animationIn: ["animate__animated", "animate__fadeIn"],
+      animationOut: ["animate__animated", "animate__fadeOut"],
+      dismiss: {
+        duration: 5000,
+        onScreen: true,
+      },
+    });
+  };
+  const isLoveButton = (id) => loveButton[id] || false;
   return (
     <div className="grid grid-cols-1 md:flex md:flex-col-3 gap-5 mx-5">
       {/* Card 1 */}
@@ -30,9 +51,21 @@ const RecipesDetails = ({ recipeCard }) => {
           <div>
             <p className="flex justify-between text-2xl mt-10 font-semibold">
               Rating: {recipeCard[0].rating}{" "}
-              <button>
-                <FaHeart className="text-red-500 " />
-              </button>
+              <span>
+                {!isLoveButton(recipeCard[0]._id) ? (
+                  <button
+                    onClick={() => {
+                      handleLoveButton(recipeCard[0]._id);
+                    }}
+                  >
+                    <FaHeart className="text-red-600" />
+                  </button>
+                ) : (
+                  <button disabled>
+                    <FaHeart className="text-green-600"/>
+                  </button>
+                )}
+              </span>
             </p>
             <p></p>
           </div>
@@ -64,9 +97,21 @@ const RecipesDetails = ({ recipeCard }) => {
           <div>
             <p className="flex justify-between mt-10 font-semibold text-2xl">
               Rating: {recipeCard[1].rating}{" "}
-              <button>
-                <FaHeart className="text-red-500 " />
-              </button>
+              <span>
+                {!isLoveButton(recipeCard[1]._id) ? (
+                  <button
+                    onClick={() => {
+                      handleLoveButton(recipeCard[1]._id);
+                    }}
+                  >
+                    <FaHeart className="text-red-600" />
+                  </button>
+                ) : (
+                  <button disabled>
+                    <FaHeart className="text-green-600"/>
+                  </button>
+                )}
+              </span>
             </p>
             <p></p>
           </div>
@@ -98,9 +143,21 @@ const RecipesDetails = ({ recipeCard }) => {
           <div>
             <p className="flex justify-between mt-10 font-semibold text-2xl">
               Rating: {recipeCard[2].rating}{" "}
-              <button>
-                <FaHeart className="text-red-500 " />
-              </button>
+              <span>
+                {!isLoveButton(recipeCard[2]._id) ? (
+                  <button
+                    onClick={() => {
+                      handleLoveButton(recipeCard[2]._id);
+                    }}
+                  >
+                    <FaHeart className="text-red-600" />
+                  </button>
+                ) : (
+                  <button disabled>
+                    <FaHeart className="text-green-600"/>
+                  </button>
+                )}
+              </span>
             </p>
             <p></p>
           </div>
