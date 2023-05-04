@@ -15,23 +15,19 @@ const Register = () => {
     const email = form.email.value;
     const password = form.password.value;
 
-    if (!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(password)) {
-      setError("password not valid need 8 char");
-      return;
-    }
+    // if (!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(password)) {
+    //   setError("password not valid need 8 char");
+    //   return;
+    // }
 
-    if ((name, email, password, photoURL)) {
-      createUser(email, password)
-        .then((result) => {
-          const createdUser = result.user;
-          form.reset();
-          
-        })
-        .catch((err) => {
-          setError(err.message)
-          console.log(err);
-        });
-    }
+    createUser(email, password)
+      .then((result) => {
+        const createdUser = result.user;
+        console.log(createdUser);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   // const handleAccepted = (e) => {

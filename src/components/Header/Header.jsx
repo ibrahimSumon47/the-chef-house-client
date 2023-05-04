@@ -2,9 +2,14 @@ import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
 import img from "../../assets/react.svg";
+import { AuthContext } from "../AuthProvider/AuthProvider";
 
-const Header = ({user}) => {
+const Header = () => {
+  const {user, logout} = useContext(AuthContext)
+
   const [showMenu, setShowMenu] = useState(false);
+
+
   const handleLogOut = () => {
     logout()
     .then()
@@ -26,28 +31,20 @@ const Header = ({user}) => {
           <div className="header-nav-link flex mt-3 space-x-10">
             <Link to="/">Home</Link>
             <Link to="/blog">Blog</Link>
-            <button>
-              <Link>
-                <img src={img} alt="" />
-              </Link>
-            </button>
-            {user && (
-              <img
+            <div className="flex">
+              {user && <img 
               title={user.displayName}
-              style = {{height: "35ppx", width: "35px"}}
-              src={user.photoURL} />
-            )}
-            <Link to="/register">Register</Link>
-            {
-              user ? (
-                <>
-                <span>{user.email}</span>
-                <button onClick={handleLogOut}>Sign Out</button>
-                </>
+              src={user.photoURL}
+              />
+              }
+              {user ? (
+                <button onClick={handleLogOut}> Logout</button>
               ): (
-                <Link to="/login">Login</Link>
-              )
-            }
+                <Link to="/login">
+                  <button>Login</button>
+                </Link>
+              )}
+            </div>
           </div>
           <button
             className="hamburger-btn"
@@ -65,12 +62,9 @@ const Header = ({user}) => {
       >
         <Link className="block py-2">Home</Link>
         <Link className="block py-2">About</Link>
-        <div className="flex mt-5">
+        <div className="flex my-5 gap-10">
           <button>Login</button>
           <button>Sign Up</button>
-          <button>
-            <Link>Profile</Link>
-          </button>
         </div>
       </div>
     </div>

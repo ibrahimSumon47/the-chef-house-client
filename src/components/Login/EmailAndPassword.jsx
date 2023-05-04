@@ -1,11 +1,14 @@
 import React, { useContext } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 
 const EmailAndPassword = () => {
   const { loginUser } = useContext(AuthContext);
 
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location.state?.from?. pathname || "/"
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -17,19 +20,11 @@ const EmailAndPassword = () => {
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
-        navigate(form, { replace: true });
-        form.reset();
+        navigate(from, { replace: true });
       })
       .catch((error) => {
-        if (
-          error.code === "user-not-found" ||
-          error.code === "wrong-password"
-        ) {
-          alert("Wrong email or password");
-        } else {
-          console.log(error);
-        }
-      });
+        console.log(error);
+      })
   };
 
   return (
