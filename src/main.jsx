@@ -6,9 +6,10 @@ import Main from "./components/layout/Main.jsx";
 import ErrorPage from "./components/ErrorPage.jsx";
 import ViewRecipeButton from "./components/Recipe/ViewRecipeButton";
 import Blog from "./components/Blog";
+import Home from "./components/shared/Home/Home/Home";
 import EmailAndPassword from "./components/Login/EmailAndPassword";
 import Register from "./components/Register.jsx/Register";
-import Home from "./components/shared/Home/Home/Home";
+import AuthProvider from "./components/AuthProvider/AuthProvider";
 
 const router = createBrowserRouter([
   {
@@ -23,7 +24,7 @@ const router = createBrowserRouter([
         path: "/chef_details/:id",
         element: <ViewRecipeButton/>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/chef_details/${params.id}`),
+          fetch(`https://the-chef-house-server-ibrahimsumon47.vercel.app/chef_details/${params.id}`),
       },
       {
         path: "/blog",
@@ -47,6 +48,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
+    <AuthProvider>
     <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>
 );

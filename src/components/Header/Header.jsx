@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
 import img from "../../assets/react.svg";
 
-const Header = () => {
+const Header = ({user}) => {
   const [showMenu, setShowMenu] = useState(false);
+  const handleLogOut = () => {
+    logout()
+    .then()
+    .catch((err) => console.log(err))
+  }
 
   const handleMenuClick = () => {
     setShowMenu(!showMenu);
@@ -26,12 +31,23 @@ const Header = () => {
                 <img src={img} alt="" />
               </Link>
             </button>
-            <Link to="/login">
-              <button>Login</button>
-            </Link>
-            <Link to="/register">
-              <button>Sign Up</button>
-            </Link>
+            {user && (
+              <img
+              title={user.displayName}
+              style = {{height: "35ppx", width: "35px"}}
+              src={user.photoURL} />
+            )}
+            <Link to="/register">Register</Link>
+            {
+              user ? (
+                <>
+                <span>{user.email}</span>
+                <button onClick={handleLogOut}>Sign Out</button>
+                </>
+              ): (
+                <Link to="/login">Login</Link>
+              )
+            }
           </div>
           <button
             className="hamburger-btn"

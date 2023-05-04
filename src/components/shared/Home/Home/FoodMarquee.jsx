@@ -5,7 +5,7 @@ const FoodMarquee = () => {
     const [foodMarquee, setFoodMarquee] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:5000/food_details")
+        fetch("https://the-chef-house-server-ibrahimsumon47.vercel.app/food_details")
           .then((res) => res.json())
           .then((data) => setFoodMarquee(data))
           .catch((error) => console.error(error));

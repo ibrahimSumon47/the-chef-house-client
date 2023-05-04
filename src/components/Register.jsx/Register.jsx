@@ -1,70 +1,113 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../AuthProvider/AuthProvider";
 
 const Register = () => {
+  const { createUser } = useContext(AuthContext);
+  const [accepted, setAccepted] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleRegister = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    const photoURL = form.photoUrl.value;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    if (!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(password)) {
+      setError("password not valid need 8 char");
+      return;
+    }
+
+    if ((name, email, password, photoURL)) {
+      createUser(email, password)
+        .then((result) => {
+          const createdUser = result.user;
+          form.reset();
+          
+        })
+        .catch((err) => {
+          setError(err.message)
+          console.log(err);
+        });
+    }
+  };
+
+  // const handleAccepted = (e) => {
+  //   setAccepted(e.target.checked);
+  // };
+
   return (
     <div>
-      <div className=" hero" style={{ backgroundColor: "#668a95" }}>
-        <div className="flex-col lg:flex-row-reverse my-5">
-          <div className="text-center lg:text-left">
-            <h1 className="text-5xl font-bold my-5">Please Register</h1>
-          </div>
-          <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-            <div className="card-body">
-            <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Your Name</span>
-                </label>
-                <input
-                  type="text"
-                  placeholder="Your Name"
-                  required
-                  className="input input-bordered "
-                />
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Your Photo URL</span>
-                </label>
-                <input
-                  type="text"
-                  placeholder="Provide your photo url"
-                  required
-                  className="input input-bordered"
-                />
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Email</span>
-                </label>
-                <input
-                  type="text"
-                  placeholder="email"
-                  required
-                  className="input input-bordered"
-                />
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Password</span>
-                </label>
-                <input
-                  type="text"
-                  placeholder="password"
-                  required
-                  className="input input-bordered"
-                />
-              </div>
-              <div className="form-control mt-6">
-                <button className="btn btn-primary">Register</button>
-              </div>
-              <p>
-                Already Have an Account? <Link to="/login">Login</Link>
-              </p>
-            </div>
-          </div>
+      <h1 className="text-3xl text-center py-5">Please Register</h1>
+      <form onSubmit={handleRegister} className="max-w-md mx-auto border rounded-lg p-10">
+        <div className="mb-4">
+          <label className="block font-bold mb-2" htmlFor="name">
+            Name
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
+            id="name"
+            name="name"
+            type="text"
+            placeholder="Enter your name"
+            required
+          />
         </div>
+        <div className="mb-4">
+        <label className="block font-bold mb-2" htmlFor="photoUrl">
+          Photo URL
+        </label>
+        <input
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          id="photoUrl"
+          name="photoUrl"
+          type="url"
+          placeholder="Enter your photo URL"
+          required
+        />
       </div>
+        <div className="mb-4">
+          <label className="block font-bold mb-2" htmlFor="email">
+            Email
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
+            id="email"
+            name="email"
+            type="email"
+            placeholder="Enter your email"
+            required
+          />
+        </div>
+        <div className="mb-6">
+          <label
+            className="block font-bold mb-2"
+            htmlFor="password"
+          >
+            Password
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
+            id="password"
+            name="password"
+            type="password"
+            placeholder="Enter your password"
+            required
+          />
+        </div>
+        <div className="flex items-center justify-between">
+          <button
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            type="submit"
+          >
+            Register
+          </button>
+        </div>
+        <p className="mt-5">New to this site? <Link to="/login">Login</Link></p>
+      </form>
+      
     </div>
   );
 };
