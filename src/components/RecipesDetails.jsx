@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FaHeart } from "react-icons/fa";
-import { ReactNotifications } from "react-notifications-component";
-import "react-notifications-component/dist/theme.css";
+import { Store } from "react-notifications-component";
+
 
 const RecipesDetails = ({ recipeCard }) => {
   const [loveButton, setLoveButton] = useState({});
@@ -10,7 +10,7 @@ const RecipesDetails = ({ recipeCard }) => {
     setLoveButton({ ...loveButton, [id]: true });
     Store.addNotification({
       title: "Wonderful!",
-      message: "teodosii@react-notifications-component",
+      message: "This recipe has been added tp your favorites!",
       type: "success",
       insert: "top",
       container: "top-right",
@@ -23,6 +23,7 @@ const RecipesDetails = ({ recipeCard }) => {
     });
   };
   const isLoveButton = (id) => loveButton[id] || false;
+
   return (
     <div className="grid grid-cols-1 md:flex md:flex-col-3 gap-5 mx-5">
       {/* Card 1 */}
@@ -62,7 +63,7 @@ const RecipesDetails = ({ recipeCard }) => {
                   </button>
                 ) : (
                   <button disabled>
-                    <FaHeart className="text-green-600"/>
+                    <FaHeart className="text-green-600" />
                   </button>
                 )}
               </span>
@@ -108,7 +109,7 @@ const RecipesDetails = ({ recipeCard }) => {
                   </button>
                 ) : (
                   <button disabled>
-                    <FaHeart className="text-green-600"/>
+                    <FaHeart className="text-green-600" />
                   </button>
                 )}
               </span>
@@ -154,7 +155,7 @@ const RecipesDetails = ({ recipeCard }) => {
                   </button>
                 ) : (
                   <button disabled>
-                    <FaHeart className="text-green-600"/>
+                    <FaHeart className="text-green-600" />
                   </button>
                 )}
               </span>

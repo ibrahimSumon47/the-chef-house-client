@@ -6,6 +6,7 @@ import Home from "./components/Home.jsx";
 import Main from "./components/layout/Main.jsx";
 import ErrorPage from "./components/ErrorPage.jsx";
 import ViewRecipeButton from "./components/ViewRecipeButton";
+import Blog from "./components/Blog";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
         element: <ViewRecipeButton/>,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/chef_details/${params.id}`),
+      },
+      {
+        path: "/blog",
+        element: <Blog/>
       },
       {
         path: "*",

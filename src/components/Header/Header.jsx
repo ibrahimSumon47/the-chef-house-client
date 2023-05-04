@@ -12,11 +12,11 @@ const Header = () => {
   return (
     <div>
       <nav className="flex md:justify-around font-mono font-semibold pt-5 p-5">
-        <button><h2 className="text-4xl">The Chef House</h2></button>
+        <Link to="/"><button><h2 className="text-4xl">The Chef House</h2></button></Link>
         <div className="flex">
           <div className="header-nav-link flex mt-3 space-x-10">
-            <Link>Home</Link>
-            <Link>Blog</Link>
+            <Link to="/">Home</Link>
+            <Link to="/blog">Blog</Link>
             <button>
               <Link><img src={img} alt="" /></Link>
             </button>
