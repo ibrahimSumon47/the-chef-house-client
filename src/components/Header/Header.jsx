@@ -12,16 +12,26 @@ const Header = () => {
   return (
     <div>
       <nav className="flex md:justify-around font-mono font-semibold pt-5 p-5">
-        <Link to="/"><button><h2 className="text-4xl">The Chef House</h2></button></Link>
+        <Link to="/">
+          <button>
+            <h2 className="text-4xl">The Chef House</h2>
+          </button>
+        </Link>
         <div className="flex">
           <div className="header-nav-link flex mt-3 space-x-10">
             <Link to="/">Home</Link>
             <Link to="/blog">Blog</Link>
             <button>
-              <Link><img src={img} alt="" /></Link>
+              <Link>
+                <img src={img} alt="" />
+              </Link>
             </button>
-            <button>Login</button>
-            <button>Sign Up</button>
+            <Link to="/login">
+              <button>Login</button>
+            </Link>
+            <Link to="/register">
+              <button>Sign Up</button>
+            </Link>
           </div>
           <button
             className="hamburger-btn"

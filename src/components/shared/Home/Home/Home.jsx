@@ -1,8 +1,8 @@
 import React from "react";
-import Banner from "./Banner";
-import ChefCard from "./chefCard";
+import ChefCard from "../Chef/ChefCard";
 import FoodDetails from "./FoodDetails";
 import FoodMarquee from "./FoodMarquee";
+import Banner from "./Banner";
 
 const Home = () => {
   return (

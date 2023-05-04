@@ -2,11 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Home from "./components/Home.jsx";
 import Main from "./components/layout/Main.jsx";
 import ErrorPage from "./components/ErrorPage.jsx";
-import ViewRecipeButton from "./components/ViewRecipeButton";
+import ViewRecipeButton from "./components/Recipe/ViewRecipeButton";
 import Blog from "./components/Blog";
+import EmailAndPassword from "./components/Login/EmailAndPassword";
+import Register from "./components/Register.jsx/Register";
+import Home from "./components/shared/Home/Home/Home";
 
 const router = createBrowserRouter([
   {
@@ -15,7 +17,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home />,
+        element: <Home/>,
       },
       {
         path: "/chef_details/:id",
@@ -30,6 +32,14 @@ const router = createBrowserRouter([
       {
         path: "*",
         element: <ErrorPage />,
+      },
+      {
+        path: "/login",
+        element: <EmailAndPassword/>
+      },
+      {
+        path:"/register",
+        element: <Register/>
       },
     ],
   },
