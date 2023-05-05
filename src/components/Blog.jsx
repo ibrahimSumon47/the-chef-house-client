@@ -1,6 +1,7 @@
 import React from "react";
 
 const Blog = () => {
+
   return (
     <div>
       <h1 className="text-5xl text-center my-10 border-t-4 pt-10">Q&A</h1>
