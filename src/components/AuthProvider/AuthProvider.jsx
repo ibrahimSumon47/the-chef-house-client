@@ -10,13 +10,15 @@ import {
   signOut,
 } from "firebase/auth";
 import app from "../../firebase/firebase.config";
+import { ClipLoader } from "react-spinners";
+import "./AuthProvider.css"
 
 export const AuthContext = createContext(null);
 
 const auth = getAuth(app);
 
-const gitHubProvider = new GithubAuthProvider
-const googleProvider = new GoogleAuthProvider
+const gitHubProvider = new GithubAuthProvider();
+const googleProvider = new GoogleAuthProvider();
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -38,14 +40,13 @@ const AuthProvider = ({ children }) => {
 
   const loginWithGitHub = () => {
     return signInWithPopup(auth, gitHubProvider);
-  }
+  };
 
   const logout = () => {
     setLoading(true);
     return signOut(auth);
   };
 
-  
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (loggedUser) => {
       setUser(loggedUser);
@@ -64,12 +65,20 @@ const AuthProvider = ({ children }) => {
     logout,
     loginUser,
     loginWithGoogle,
-    loginWithGitHub
+    loginWithGitHub,
   };
 
   return (
     <div>
-      <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
+      <AuthContext.Provider value={authInfo}>
+        {loading ? (
+          <div className="spinner-container">
+            <ClipLoader size={50} color="#ed241d" />
+          </div>
+        ) : (
+          children
+        )}
+      </AuthContext.Provider>
     </div>
   );
 };
