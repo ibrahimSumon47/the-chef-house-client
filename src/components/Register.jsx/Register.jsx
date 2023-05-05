@@ -1,9 +1,10 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
+import { updateProfile } from "firebase/auth";
 
 const Register = () => {
-  const { createUser } = useContext(AuthContext);
+  const { createUser, logout } = useContext(AuthContext);
   const [accepted, setAccepted] = useState(false);
   const [error, setError] = useState("");
 
@@ -20,10 +21,15 @@ const Register = () => {
     //   return;
     // }
 
-    createUser(email, password)
+    createUser(email, password, { setDisplayName: false })
       .then((result) => {
+        logout()
         const createdUser = result.user;
-        console.log(createdUser);
+        form.reset();
+        updateProfile(createdUser, {
+          displayName: name,
+          photoURL: photoURL,
+        });
       })
       .catch((error) => {
         console.log(error);
@@ -35,9 +41,13 @@ const Register = () => {
   };
 
   return (
-    <div className="pb-10" style={{backgroundColor: "#32363b"}}>
+    <div className="pb-10" style={{ backgroundColor: "#32363b" }}>
       <h1 className="text-3xl text-center py-5 font-bold">Please Register</h1>
-      <form onSubmit={handleRegister} className="max-w-md mx-auto border rounded-lg p-10" style={{backgroundColor: "#1d344d"}}>
+      <form
+        onSubmit={handleRegister}
+        className="max-w-md mx-auto border rounded-lg p-10"
+        style={{ backgroundColor: "#1d344d" }}
+      >
         <div className="mb-4">
           <label className="block font-bold mb-2" htmlFor="name">
             Name
@@ -52,18 +62,18 @@ const Register = () => {
           />
         </div>
         <div className="mb-4">
-        <label className="block font-bold mb-2" htmlFor="photoUrl">
-          Photo URL
-        </label>
-        <input
-          className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
-          id="photoUrl"
-          name="photoUrl"
-          type="url"
-          placeholder="Enter your photo URL"
-          required
-        />
-      </div>
+          <label className="block font-bold mb-2" htmlFor="photoURL">
+            Photo URL
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
+            id="photoUrl"
+            name="photoURL"
+            type="url"
+            placeholder="Enter your photo URL"
+            required
+          />
+        </div>
         <div className="mb-4">
           <label className="block font-bold mb-2" htmlFor="email">
             Email
@@ -78,10 +88,7 @@ const Register = () => {
           />
         </div>
         <div className="mb-6">
-          <label
-            className="block font-bold mb-2"
-            htmlFor="password"
-          >
+          <label className="block font-bold mb-2" htmlFor="password">
             Password
           </label>
           <input
@@ -94,20 +101,26 @@ const Register = () => {
           />
         </div>
         <div className="flex mb-5 gap-3 ">
-        <input onClick={handleAccepted} type="checkbox"  class="checkbox checkbox-sm"/> 
-        <p>Agree to our trems and condition.</p>
+          <input
+            onClick={handleAccepted}
+            type="checkbox"
+            class="checkbox checkbox-sm"
+          />
+          <p>Agree to our trems and condition.</p>
         </div>
         <div className="flex items-center justify-between">
           <button
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            type="submit" disabled = {!accepted}
+            type="submit"
+            disabled={!accepted}
           >
             Register
           </button>
         </div>
-        <p className="mt-5">New to this site? <Link to="/login">Login</Link></p>
+        <p className="mt-5">
+          New to this site? <Link to="/login">Login</Link>
+        </p>
       </form>
-      
     </div>
   );
 };
