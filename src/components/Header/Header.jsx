@@ -27,20 +27,30 @@ const Header = () => {
           </button>
         </Link>
         <div className="flex">
-          <div className="header-nav-link flex mt-3 space-x-10">
+          <div className="header-nav-link grid grid-cols-1 mt-3 space-x-10">
             <Link to="/">Home</Link>
             <Link to="/blog">Blog</Link>
-            <div>
-              {user && <img title={user.displayName} src={user.photoURL} />}
-              {user ? (
-                <button onClick={handleLogOut}> Logout</button>
-              ) : (
-                <Link to="/login">
-                  <button>Login</button>
-                </Link>
-              )}
-            </div>
+            {user && (
+              <>
+                <img
+                  title={user.displayName}
+                  style={{ height: "30px", width: "30px" }}
+                  className="rounded-xl "
+                  src={user.photoURL}
+                />
+              </>
+            )}
+            {user ? (
+              <>
+                {/* <span>{user.email}</span> */}
+                <button onClick={handleLogOut}>Logout</button>
+              </>
+            ) : (
+              <Link to="/login">Login</Link>
+            )}
+            {user ? <></> : <Link to="/register">Register</Link>}
           </div>
+
           <button
             className="hamburger-btn"
             onClick={handleMenuClick}
@@ -55,11 +65,11 @@ const Header = () => {
           showMenu ? "show-mobile-menu" : ""
         }`}
       >
-        <Link className="block py-2">Home</Link>
-        <Link className="block py-2">About</Link>
+        <Link to="/" className="block py-2">Home</Link>
+        <Link to="/blog" className="block py-2">Blog</Link>
         <div className="flex my-5 gap-10">
-          <button>Login</button>
-          <button>Sign Up</button>
+          <Link to="/login"><button>Login</button></Link>
+          <Link to="/register"><button>Register</button></Link>
         </div>
       </div>
     </div>

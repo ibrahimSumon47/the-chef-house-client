@@ -1,7 +1,8 @@
+import { Rating } from "@smastrom/react-rating";
+import '@smastrom/react-rating/style.css'
 import React, { useState } from "react";
 import { FaHeart } from "react-icons/fa";
 import { Store } from "react-notifications-component";
-
 
 const RecipesDetails = ({ recipeCard }) => {
   const [loveButton, setLoveButton] = useState({});
@@ -51,7 +52,11 @@ const RecipesDetails = ({ recipeCard }) => {
           </p>
           <div>
             <p className="flex justify-between text-2xl mt-10 font-semibold">
-              Rating: {recipeCard[0].rating}{" "}
+              <div className="flex gap-2 ">
+              <span>Rating</span>
+              <Rating style={{ maxWidth: 200 }} value={recipeCard[0].rating} readOnly />{" "}
+              
+              </div>
               <span>
                 {!isLoveButton(recipeCard[0]._id) ? (
                   <button
@@ -97,7 +102,11 @@ const RecipesDetails = ({ recipeCard }) => {
           </p>
           <div>
             <p className="flex justify-between mt-10 font-semibold text-2xl">
-              Rating: {recipeCard[1].rating}{" "}
+            <div className="flex gap-2 ">
+              <span>Rating</span>
+              <Rating style={{ maxWidth: 200 }} value={recipeCard[1].rating} readOnly />{" "}
+              
+              </div>
               <span>
                 {!isLoveButton(recipeCard[1]._id) ? (
                   <button
@@ -143,7 +152,11 @@ const RecipesDetails = ({ recipeCard }) => {
           </p>
           <div>
             <p className="flex justify-between mt-10 font-semibold text-2xl">
-              Rating: {recipeCard[2].rating}{" "}
+            <div className="flex gap-2 ">
+              <span>Rating</span>
+              <Rating style={{ maxWidth: 200 }} value={recipeCard[2].rating} readOnly />{" "}
+              
+              </div>
               <span>
                 {!isLoveButton(recipeCard[2]._id) ? (
                   <button

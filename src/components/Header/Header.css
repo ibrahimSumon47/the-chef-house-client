@@ -2,6 +2,13 @@
 .header-nav-link {
     display: block;
   }
+
+  .user-info {
+    display: flex;
+    align-items: center;
+  }
+  
+
   @media only screen and (max-width: 768px) {
     .header-nav-link {
       display: none;
