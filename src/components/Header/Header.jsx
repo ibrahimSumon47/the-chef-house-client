@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
-import img from "../../assets/react.svg";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 
 const Header = () => {
@@ -26,29 +25,40 @@ const Header = () => {
             <h2 className="text-4xl">The Chef House</h2>
           </button>
         </Link>
-        <div className="flex">
-          <div className="header-nav-link grid grid-cols-1 mt-3 space-x-10">
-            <Link to="/">Home</Link>
-            <Link to="/blog">Blog</Link>
-            {user && (
-              <>
-                <img
-                  title={user.displayName}
-                  style={{ height: "30px", width: "30px" }}
-                  className="rounded-xl "
-                  src={user.photoURL}
-                />
-              </>
-            )}
-            {user ? (
-              <>
-                {/* <span>{user.email}</span> */}
-                <button onClick={handleLogOut}>Logout</button>
-              </>
-            ) : (
-              <Link to="/login">Login</Link>
-            )}
-            {user ? <></> : <Link to="/register">Register</Link>}
+        <div className="flex justify-between">
+          <div className="header-nav-link flex mt-3 space-x-10">
+            <div className="flex gap-10 items-center">
+              <div>
+                <Link to="/">Home</Link>
+              </div>
+              <div>
+                <Link to="/blog">Blog</Link>
+              </div>
+              <div>
+                {user && (
+                  <div>
+                    <img
+                      title={user.displayName}
+                      className="rounded-xl"
+                      style={{width: "30px", height: "30px"}}
+                      src={user.photoURL}
+                    />
+                  </div>
+                )}
+              </div>
+              <div>
+                {user ? (
+                  <div>
+                    {/* <span>{user.email}</span> */}
+                    <button onClick={handleLogOut}>Logout</button>
+                  </div>
+                ) : (
+                  <Link to="/login">Login</Link>
+                )}
+                </div>
+                <div>{user ? <></> : <Link to="/register">Register</Link>}</div>
+              
+            </div>
           </div>
 
           <button
@@ -65,11 +75,33 @@ const Header = () => {
           showMenu ? "show-mobile-menu" : ""
         }`}
       >
-        <Link to="/" className="block py-2">Home</Link>
-        <Link to="/blog" className="block py-2">Blog</Link>
-        <div className="flex my-5 gap-10">
-          <Link to="/login"><button>Login</button></Link>
-          <Link to="/register"><button>Register</button></Link>
+        <Link to="/" className="block py-2 px-5">
+          Home
+        </Link>
+        <Link to="/blog" className="block py-2 px-5">
+          Blog
+        </Link>
+
+        <div className="flex my-5 gap-10 px-5">
+          {user && (
+            <>
+              <img
+                title={user.displayName}
+                style={{ height: "30px", width: "30px" }}
+                className="rounded-xl "
+                src={user.photoURL}
+              />
+            </>
+          )}
+          {user ? (
+            <>
+              {/* <span>{user.email}</span> */}
+              <button onClick={handleLogOut}>Logout</button>
+            </>
+          ) : (
+            <Link to="/login">Login</Link>
+          )}
+          {user ? <></> : <Link to="/register">Register</Link>}
         </div>
       </div>
     </div>

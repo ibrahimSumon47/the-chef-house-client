@@ -104,7 +104,7 @@ const Register = () => {
           <input
             onClick={handleAccepted}
             type="checkbox"
-            class="checkbox checkbox-sm"
+            className="checkbox checkbox-sm"
           />
           <p>Agree to our trems and condition.</p>
         </div>
