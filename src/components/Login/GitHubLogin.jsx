@@ -1,11 +1,12 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { FaGithub } from "react-icons/fa";
 
 const GitHubLogin = () => {
   const { loginWithGitHub } = useContext(AuthContext);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const from = location.state?.from?.pathname || "/";
 
@@ -13,6 +14,7 @@ const GitHubLogin = () => {
     loginWithGitHub()
       .then((result) => {
         const gitHubLogged = result.user;
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.log(error);

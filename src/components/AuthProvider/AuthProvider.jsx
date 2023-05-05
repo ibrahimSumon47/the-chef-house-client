@@ -16,6 +16,7 @@ export const AuthContext = createContext(null);
 const auth = getAuth(app);
 
 const gitHubProvider = new GithubAuthProvider
+const googleProvider = new GoogleAuthProvider
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -32,9 +33,7 @@ const AuthProvider = ({ children }) => {
   };
 
   const loginWithGoogle = () => {
-    setLoading(true);
-    provider.setCustomParameters({prompt:"select_account"})
-    return signInWithPopup(auth, provider);
+    return signInWithPopup(auth, googleProvider);
   };
 
   const loginWithGitHub = () => {
