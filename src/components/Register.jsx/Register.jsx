@@ -16,10 +16,10 @@ const Register = () => {
     const email = form.email.value;
     const password = form.password.value;
 
-    // if (!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(password)) {
-    //   setError("password not valid need 8 char");
-    //   return;
-    // }
+    if (!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(password)) {
+      alert("password not valid Minimum eight characters, at least one letter and one number");
+      return;
+    }
 
     createUser(email, password, { setDisplayName: false })
       .then((result) => {
@@ -71,7 +71,6 @@ const Register = () => {
             name="photoURL"
             type="url"
             placeholder="Enter your photo URL"
-            required
           />
         </div>
         <div className="mb-4">

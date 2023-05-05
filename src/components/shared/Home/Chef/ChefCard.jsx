@@ -29,7 +29,7 @@ const ChefCard = () => {
             <div key={id}>
               <div className="card lg:card-side bg-base-100 shadow-xl my-5 mx-5">
                 <figure>
-                  <LazyLoad height={250} width={384}>
+                  <LazyLoad height={325} width={384}>
                     <img
                       className="w-96 h-auto md:h-96"
                       src={chef_picture1}

@@ -21,7 +21,6 @@ const EmailAndPassword = () => {
     loginUser(email, password)
       .then((result) => {
         const loggedUser = result.user;
-        console.log(loggedUser);
         navigate(from, { replace: true });
       })
       .catch((error) => {
@@ -29,7 +28,7 @@ const EmailAndPassword = () => {
       });
   };
 
-  
+
 
   return (
     <div className="pb-10 " style={{ backgroundColor: "#32363b" }}>
