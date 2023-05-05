@@ -30,14 +30,14 @@ const Register = () => {
       });
   };
 
-  // const handleAccepted = (e) => {
-  //   setAccepted(e.target.checked);
-  // };
+  const handleAccepted = (e) => {
+    setAccepted(e.target.checked);
+  };
 
   return (
-    <div>
-      <h1 className="text-3xl text-center py-5">Please Register</h1>
-      <form onSubmit={handleRegister} className="max-w-md mx-auto border rounded-lg p-10">
+    <div className="pb-10" style={{backgroundColor: "#32363b"}}>
+      <h1 className="text-3xl text-center py-5 font-bold">Please Register</h1>
+      <form onSubmit={handleRegister} className="max-w-md mx-auto border rounded-lg p-10" style={{backgroundColor: "#1d344d"}}>
         <div className="mb-4">
           <label className="block font-bold mb-2" htmlFor="name">
             Name
@@ -56,7 +56,7 @@ const Register = () => {
           Photo URL
         </label>
         <input
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
           id="photoUrl"
           name="photoUrl"
           type="url"
@@ -93,10 +93,14 @@ const Register = () => {
             required
           />
         </div>
+        <div className="flex mb-5 gap-3 ">
+        <input onClick={handleAccepted} type="checkbox"  class="checkbox checkbox-sm"/> 
+        <p>Agree to our trems and condition.</p>
+        </div>
         <div className="flex items-center justify-between">
           <button
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            type="submit"
+            type="submit" disabled = {!accepted}
           >
             Register
           </button>

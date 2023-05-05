@@ -5,16 +5,15 @@ import img from "../../assets/react.svg";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 
 const Header = () => {
-  const {user, logout} = useContext(AuthContext)
+  const { user, logout } = useContext(AuthContext);
 
   const [showMenu, setShowMenu] = useState(false);
 
-
   const handleLogOut = () => {
     logout()
-    .then()
-    .catch((err) => console.log(err))
-  }
+      .then()
+      .catch((err) => console.log(err));
+  };
 
   const handleMenuClick = () => {
     setShowMenu(!showMenu);
@@ -31,15 +30,11 @@ const Header = () => {
           <div className="header-nav-link flex mt-3 space-x-10">
             <Link to="/">Home</Link>
             <Link to="/blog">Blog</Link>
-            <div className="flex">
-              {user && <img 
-              title={user.displayName}
-              src={user.photoURL}
-              />
-              }
+            <div>
+              {user && <img title={user.displayName} src={user.photoURL} />}
               {user ? (
                 <button onClick={handleLogOut}> Logout</button>
-              ): (
+              ) : (
                 <Link to="/login">
                   <button>Login</button>
                 </Link>

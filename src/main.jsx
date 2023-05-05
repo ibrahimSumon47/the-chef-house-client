@@ -10,6 +10,7 @@ import Home from "./components/shared/Home/Home/Home";
 import EmailAndPassword from "./components/Login/EmailAndPassword";
 import Register from "./components/Register.jsx/Register";
 import AuthProvider from "./components/AuthProvider/AuthProvider";
+import PrivateRoute from "./components/PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -22,7 +23,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/chef_details/:id",
-        element: <ViewRecipeButton/>,
+        element: <PrivateRoute><ViewRecipeButton/></PrivateRoute>,
         loader: ({ params }) =>
           fetch(`https://the-chef-house-server-ibrahimsumon47.vercel.app/chef_details/${params.id}`),
       },

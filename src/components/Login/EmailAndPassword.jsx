@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
+import GoogleLogin from "./GoogleLogin";
 
 const EmailAndPassword = () => {
   const { loginUser } = useContext(AuthContext);
@@ -29,7 +30,7 @@ const EmailAndPassword = () => {
 
   return (
     <div>
-      <h1 className="text-3xl text-center py-5">Please Register</h1>
+      <h1 className="text-3xl text-center py-5">Please Login</h1>
       <form
         onSubmit={handleLogin}
         className="max-w-md mx-auto border rounded-lg p-10"
@@ -66,6 +67,12 @@ const EmailAndPassword = () => {
             type="submit"
           >
             Login
+          </button>
+          
+        </div>
+        <div>
+        <button>
+            <GoogleLogin/>
           </button>
         </div>
         <p className="mt-5">Already Have an account? <Link to="/register">Register</Link></p>
