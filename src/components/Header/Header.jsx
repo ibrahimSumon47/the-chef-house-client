@@ -22,8 +22,9 @@ const Header = () => {
     <div>
       <nav className="flex md:justify-around font-mono font-semibold  py-10">
         <Link to="/">
-          <button>
-            <h2 className="text-4xl">The Chef House</h2>
+          <button className="flex">
+            <img className="w-10 h-10" src="https://cdn-icons-png.flaticon.com/512/1163/1163054.png?w=826&t=st=1683307196~exp=1683307796~hmac=8076993ffe6759bfc91c9eda7eb31c10ed97822912eebc2f4eea1f5427fc68d8" alt="" />
+            <h2 className="text-4xl ">The Chef House</h2>
           </button>
         </Link>
         <div className="flex justify-between">
@@ -63,7 +64,7 @@ const Header = () => {
           </div>
 
           <button
-            className="hamburger-btn"
+            className="hamburger-btn pt-10"
             onClick={handleMenuClick}
             aria-label="Toggle Menu"
           >
@@ -96,7 +97,6 @@ const Header = () => {
           )}
           {user ? (
             <>
-              {/* <span>{user.email}</span> */}
               <button onClick={handleLogOut}>Logout</button>
             </>
           ) : (
