@@ -1,22 +1,24 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
     <footer className="footer justify-around p-10 bg-purple-500 text-slate-200 mt-5 font-semibold">
       
       <div>
-        <span className="footer-title">Company</span>
-        <a className="link link-hover">About us</a>
-        <a className="link link-hover">Contact</a>
-        <a className="link link-hover">Jobs</a>
-        <a className="link link-hover">Press kit</a>
+        <Link>
+          <span className="text-4xl pt-20 text-slate-200">
+            The Cafe House
+          </span>
+        </Link>
       </div>
+      
       <div>
         <span className="footer-title">Legal</span>
-        <a className="link link-hover">Terms of use</a>
-        <a className="link link-hover">Privacy policy</a>
-        <a className="link link-hover">Cookie policy</a>
+        <Link to="/">Home</Link>
+        <Link to="/blog">Blog</Link>
       </div>
+      
       <div>
         <span className="footer-title">Newsletter</span>
         <div className="form-control w-80">
@@ -33,9 +35,12 @@ const Footer = () => {
               Subscribe
             </button>
           </div>
+          
         </div>
+        
       </div>
     </footer>
+    
   );
 };
 

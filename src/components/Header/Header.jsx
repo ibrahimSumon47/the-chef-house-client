@@ -1,10 +1,11 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./Header.css";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 
 const Header = () => {
   const { user, logout } = useContext(AuthContext);
+  const location = useLocation()
 
   const [showMenu, setShowMenu] = useState(false);
 
@@ -19,7 +20,7 @@ const Header = () => {
   };
   return (
     <div>
-      <nav className="flex md:justify-around font-mono font-semibold pt-5 p-5">
+      <nav className="flex md:justify-around font-mono font-semibold  py-10">
         <Link to="/">
           <button>
             <h2 className="text-4xl">The Chef House</h2>
@@ -28,11 +29,12 @@ const Header = () => {
         <div className="flex justify-between">
           <div className="header-nav-link flex mt-3 space-x-10">
             <div className="flex gap-10 items-center">
-              <div>
-                <Link to="/">Home</Link>
+              <div className="">
+                <Link style={{ textDecoration: "none" }} className={`${location.pathname === "/" ? "bg-red-500 p-5 border rounded-lg" : ""}`} to="/">Home</Link>
+                
               </div>
-              <div>
-                <Link to="/blog">Blog</Link>
+              <div className="">
+                <Link style={{ textDecoration: "none" }} className={`${location.pathname === "/blog" ? "bg-red-500 p-5 border rounded-lg" : ""}`} to="/blog">Blog</Link>
               </div>
               <div>
                 {user && (
@@ -48,15 +50,14 @@ const Header = () => {
               </div>
               <div>
                 {user ? (
-                  <div>
-                    {/* <span>{user.email}</span> */}
+                  <div className="">
                     <button onClick={handleLogOut}>Logout</button>
                   </div>
                 ) : (
-                  <Link to="/login">Login</Link>
+                  <Link style={{ textDecoration: "none" }} className={`${location.pathname === "/login" ? "bg-red-500 p-5 border rounded-lg" : ""}`} to="/login">Login</Link>
                 )}
                 </div>
-                <div>{user ? <></> : <Link to="/register">Register</Link>}</div>
+                <div>{user ? <></> : <Link style={{ textDecoration: "none" }} className={`${location.pathname === "/register" ? "bg-red-500 p-5 border rounded-lg" : ""}`} to="/register">Register</Link>}</div>
               
             </div>
           </div>
