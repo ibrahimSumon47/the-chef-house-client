@@ -1,5 +1,5 @@
-import React, { useContext } from "react";
-import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
+import React, { useContext} from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import GoogleLogin from "./GoogleLogin";
 import GitHubLogin from "./GitHubLogin";
@@ -25,6 +25,8 @@ const EmailAndPassword = () => {
       })
       .catch((error) => {
         console.log(error);
+        alert("Invalid email or password");
+        navigate("/login")
       });
   };
 

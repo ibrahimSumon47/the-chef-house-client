@@ -1,10 +1,28 @@
-import React from "react";
+import { PDFExport } from "@progress/kendo-react-all";
+import React, { useRef } from "react";
 
 const Blog = () => {
+
+  const pdfExportComponent = useRef(null)
+
+  const handleDownload = () => {
+    if (pdfExportComponent.current){
+      pdfExportComponent.current.save();
+    }
+  }
 
   return (
     <div>
       <h1 className="text-5xl text-center my-10 border-t-4 pt-10">Q&A</h1>
+      <div className="text-center">
+      <button onClick={handleDownload} className="btn btn-success">Download Blogs in PDF</button>
+      </div>
+      <PDFExport
+      pagerSize = "A4"
+      fileName="Blogs.pdf"
+      
+      ref={pdfExportComponent}
+      >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 p-10 text-3xl">
         <div className="border rounded-lg p-5 ">
           <p className="my-5">
@@ -44,6 +62,7 @@ const Blog = () => {
             <p className="mb-5">Ans: Custom React JS hooks offer three major benefits over standard library hooks: Reusability, readability, and testability. Custom React JS hooks can help developers save time, are reliable, reusable, and make the code clean. Creating custom React JS hooks is relatively easy, and you can search for many open sources where you can get some custom hooks from the library already created by developers.</p>
         </div>
       </div>
+      </PDFExport>
     </div>
   );
 };

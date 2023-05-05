@@ -34,7 +34,7 @@ const ViewRecipeButton = () => {
         </div>
       </div>
       <div>
-        <h2>Recipes</h2>
+        <h2 className="text-5xl text-center my-10 bg-white text-black p-10 font-extrabold">All Recipes Are Here</h2>
         <RecipesDetails recipeCard={recipeCard}></RecipesDetails>
       </div>
     </div>
